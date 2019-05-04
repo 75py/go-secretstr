@@ -27,6 +27,13 @@ func (ss SecretString) String() string {
 	return DummyString
 }
 
+// GoString() always returns DummyString.
+//
+// This function is the implementation of GoStringer interface.
+func (ss SecretString) GoString() string {
+	return DummyString
+}
+
 func (ss *SecretString) RawString() *string {
 	if ss == nil {
 		return nil
