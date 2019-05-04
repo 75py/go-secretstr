@@ -52,9 +52,9 @@ func (ss SecretString) MarshalJSON() ([]byte, error) {
 
 	if ss.marshallable {
 		return json.Marshal(ss.raw)
-	} else {
-		return json.Marshal(DummyString)
 	}
+
+	return json.Marshal(DummyString)
 }
 
 func (ss *SecretString) UnmarshalJSON(data []byte) error {
@@ -89,10 +89,10 @@ func (ss SecretString) MarshalXML(e *xml.Encoder, start xml.StartElement) error 
 	if ss.marshallable {
 		// <tag>raw</tag>
 		return e.EncodeElement(ss.raw, start)
-	} else {
-		// <tag>[FILTERED]</tag>
-		return e.EncodeElement(DummyString, start)
 	}
+
+	// <tag>[FILTERED]</tag>
+	return e.EncodeElement(DummyString, start)
 }
 
 func (ss *SecretString) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
