@@ -1,22 +1,3 @@
-# go-secretstr
-
-[![Build Status](https://travis-ci.org/75py/go-secretstr.svg?branch=master)](https://travis-ci.org/75py/go-secretstr)
-[![codecov](https://codecov.io/gh/75py/go-secretstr/branch/master/graph/badge.svg)](https://codecov.io/gh/75py/go-secretstr)
-[![GoDoc](https://godoc.org/github.com/75py/go-secretstr?status.svg)](https://godoc.org/github.com/75py/go-secretstr)
-
-## Install
-
-```bash
-go get github.com/75py/go-secretstr
-```
-
-## Documents
-
-https://godoc.org/github.com/75py/go-secretstr
-
-## Usage
-
-```go
 package main
 
 import (
@@ -53,16 +34,3 @@ func main() {
 	fmt.Printf("fmt.Printf(\"%%+v\", loginForm) => %+v \n", loginForm)
 	fmt.Printf("fmt.Printf(\"%%#v\", loginForm) => %#v \n", loginForm)
 }
-```
-
-Output
-```
-fmt.Printf("%s", unsafeLoginForm) => {raw_id raw_password} 
-fmt.Printf("%v", unsafeLoginForm) => {raw_id raw_password} 
-fmt.Printf("%+v", unsafeLoginForm) => {ID:raw_id Password:raw_password} 
-fmt.Printf("%#v", unsafeLoginForm) => main.UnsafeLoginForm{ID:"raw_id", Password:"raw_password"} 
-fmt.Printf("%s", loginForm) => {[FILTERED] [FILTERED]} 
-fmt.Printf("%v", loginForm) => {[FILTERED] [FILTERED]} 
-fmt.Printf("%+v", loginForm) => {ID:[FILTERED] Password:[FILTERED]} 
-fmt.Printf("%#v", loginForm) => main.LoginForm{ID:[FILTERED], Password:[FILTERED]} 
-```
