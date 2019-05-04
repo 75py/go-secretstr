@@ -2,7 +2,9 @@ language: go
 
 go:
   - 1.12
-  - tip
+
+env:
+  - GO111MODULE=on
 
 before_install:
   - go get -t -v ./...
