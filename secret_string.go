@@ -23,7 +23,7 @@ func NewMarshallableSecureString(raw *string) SecretString {
 	return SecretString{raw: raw, marshallable: true}
 }
 
-func (ss *SecretString) String() string {
+func (ss SecretString) String() string {
 	return DummyString
 }
 
