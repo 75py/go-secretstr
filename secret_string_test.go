@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
-	"secretstr"
+	"github.com/75py/go-secretstr"
 	"strings"
 	"testing"
 )
@@ -445,7 +445,7 @@ func TestSecretString_UnmarshalXML(t *testing.T) {
 
 func TestSecretString_UnmarshalXML_ptr(t *testing.T) {
 	type TestStruct struct {
-		XMLName           xml.Name               `xml:"test"`
+		XMLName           xml.Name                `xml:"test"`
 		Str               *secretstr.SecretString `xml:"ss"`
 		StrEmpty          *secretstr.SecretString `xml:"ss_empty"`
 		StrEmptyOmitEmpty *secretstr.SecretString `xml:"ss_empty_omitempty,omitempty"`
