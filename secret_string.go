@@ -7,20 +7,23 @@ import (
 	"strings"
 )
 
+// FilterMode is a configuration of SecretString.
+// See FilterModeHide, FilterModeFixedString, FilterModeDisable
 type FilterMode int
 
 const (
-	// Format SecretString to a fixed string.
+	// FilterModeFixedString : Format SecretString to a fixed string.
 	// ex) "foobar"-> "[FILTERED]"
 	FilterModeFixedString FilterMode = iota
-	// Format SecretString to asterisk.
+	// FilterModeHide : Format SecretString to asterisk.
 	// ex) "foobar" -> "******"
 	FilterModeHide
-	// Format SecretString to original string. This flag should not use on release build.
+	// FilterModeDisable : Format SecretString to original string. This flag should not use on release build.
 	// ex) "foobar"-> "foobar"
 	FilterModeDisable
 )
 
+// SecretStringConfig is configurations of SecretString
 type SecretStringConfig struct {
 	// If true, The members of structs can marshal by json.Marshal() or xml.Marshal().
 	// Default value: false
@@ -33,6 +36,8 @@ type SecretStringConfig struct {
 	FixedDummyString string
 }
 
+// Config is the instance of SecretStringConfig.
+// It's used by all SecretString instances.
 var Config = SecretStringConfig{
 	Marshallable:     false,
 	Mode:             FilterModeFixedString,
@@ -43,7 +48,7 @@ var Config = SecretStringConfig{
 // This type cannot format by normal ways.
 type SecretString string
 
-// Implementation of Stringer interface.
+// String : Implementation of Stringer interface.
 func (ss SecretString) String() string {
 	switch Config.Mode {
 	case FilterModeHide:
@@ -57,17 +62,19 @@ func (ss SecretString) String() string {
 	}
 }
 
-// Implementation of GoStringer interface.
+// GoString : Implementation of GoStringer interface.
 func (ss SecretString) GoString() string {
 	return ss.String()
 }
 
-// Convert to basic string.
+// RawString is convert SecretString to basic string.
 // Returned string is not safe for formatting, so be careful to use it.
 func (ss SecretString) RawString() string {
 	return string(ss)
 }
 
+// MarshalJSON overrides the result of json.Marshal().
+// If Config.Marshallable = true, the result JSON contains raw strings.
 func (ss SecretString) MarshalJSON() ([]byte, error) {
 	if Config.Marshallable {
 		return json.Marshal(ss.RawString())
@@ -75,6 +82,8 @@ func (ss SecretString) MarshalJSON() ([]byte, error) {
 	return json.Marshal(ss.String())
 }
 
+// MarshalXML overrides the result of xml.Marshal().
+// If Config.Marshallable = true, the result XML contains raw strings.
 func (ss SecretString) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	if Config.Marshallable {
 		return e.EncodeElement(ss.RawString(), start)
