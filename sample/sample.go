@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/75py/go-secretstr"
+	"github.com/75py/secretstr"
 )
 
 type UnsafeLoginForm struct {

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
-	"github.com/75py/go-secretstr"
+	"github.com/75py/secretstr"
 	"testing"
 )
 

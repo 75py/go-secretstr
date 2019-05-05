@@ -1,18 +1,18 @@
 # go-secretstr
 
-[![Build Status](https://travis-ci.org/75py/go-secretstr.svg?branch=master)](https://travis-ci.org/75py/go-secretstr)
-[![codecov](https://codecov.io/gh/75py/go-secretstr/branch/master/graph/badge.svg)](https://codecov.io/gh/75py/go-secretstr)
-[![GoDoc](https://godoc.org/github.com/75py/go-secretstr?status.svg)](https://godoc.org/github.com/75py/go-secretstr)
+[![Build Status](https://travis-ci.org/75py/secretstr.svg?branch=master)](https://travis-ci.org/75py/secretstr)
+[![codecov](https://codecov.io/gh/75py/secretstr/branch/master/graph/badge.svg)](https://codecov.io/gh/75py/secretstr)
+[![GoDoc](https://godoc.org/github.com/75py/secretstr?status.svg)](https://godoc.org/github.com/75py/secretstr)
 
 ## Install
 
 ```bash
-go get github.com/75py/go-secretstr
+go get github.com/75py/secretstr
 ```
 
 ## Documents
 
-https://godoc.org/github.com/75py/go-secretstr
+https://godoc.org/github.com/75py/secretstr
 
 ## Usage
 
@@ -22,7 +22,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/75py/go-secretstr"
+	"github.com/75py/secretstr"
 )
 
 type UnsafeLoginForm struct {
