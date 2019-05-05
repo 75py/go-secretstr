@@ -3,7 +3,6 @@ package secretstr
 import (
 	"encoding/json"
 	"encoding/xml"
-	"errors"
 	"fmt"
 	"strings"
 )
@@ -54,7 +53,7 @@ func (ss SecretString) String() string {
 	case FilterModeDisable:
 		return ss.RawString()
 	default:
-		panic(errors.New(fmt.Sprintf("unexpected FilterMode. config=%#v", Config)))
+		panic(fmt.Errorf("unexpected FilterMode. config=%#v", Config))
 	}
 }
 
