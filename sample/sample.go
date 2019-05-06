@@ -33,4 +33,14 @@ func main() {
 	fmt.Printf("fmt.Printf(\"%%v\", loginForm) => %v \n", loginForm)
 	fmt.Printf("fmt.Printf(\"%%+v\", loginForm) => %+v \n", loginForm)
 	fmt.Printf("fmt.Printf(\"%%#v\", loginForm) => %#v \n", loginForm)
+
+	login(loginForm.ID, loginForm.Password)
+}
+
+func login(id, pw secretstr.SecretString) {
+	rawID := id.RawString()       // basic string type
+	rawPassword := pw.RawString() // basic string type
+
+	// Use raw strings
+	_ = rawID + rawPassword
 }
